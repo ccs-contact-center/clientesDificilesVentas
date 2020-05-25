@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CardBody, CardHeader, Col, Row } from 'reactstrap'
 import ReactPlayer from 'react-player'
-import atc01 from '../../assets/img/ImgClientesDificiles/atc01.mp4'
+import cierre01 from '../../assets/img/ImgClientesDificiles/cierre01.mp4'
 
 class PresentacionView extends Component {
   loading = () => (
@@ -43,7 +43,7 @@ class PresentacionView extends Component {
               </div>
             </Col>
             <Col xs="12" className="centrado-fila mt-4 animated  fadeInDown  delay-5s">
-              <ReactPlayer url={atc01} controls={true} />
+              <ReactPlayer url={cierre01} controls={true} />
             </Col>
           </Row>
         </CardBody>
