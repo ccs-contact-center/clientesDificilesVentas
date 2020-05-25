@@ -42,8 +42,8 @@ class Inicio extends Component {
       <div className="animated fadeIn">
         <Card>
           {this.state.index === 0 ? (
-            <DespedidaView />
-            //<BienvenidaView />
+           // <DespedidaView />
+            <BienvenidaView />
           ) : this.state.index === 1 ? (
             <ObjetivoView />
           ) : this.state.index === 2 ? (
@@ -61,7 +61,7 @@ class Inicio extends Component {
           ) : this.state.index === 8 ? (
             <TemaSieteView />
           ) : this.state.index === 9 ? (
-            <Actividad2View />
+            <Actividad1View />
           ) : this.state.index === 10 ? (
             <Actividad2View />
           ) : this.state.index === 11 ? (
