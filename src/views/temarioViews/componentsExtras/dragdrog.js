@@ -49,7 +49,7 @@ class Actividad1 extends Component {
     return (
       <Row className="  centrado-fila ">
         <Col xs="12">
-          <div className="card bg-fondo-btn2">
+          <div className=" bg-fondo-btn2">
             <div className="centrado-fila bgImgTabla font-weight-bold">
               <div>
                 <ReactSortable
@@ -303,7 +303,7 @@ class Actividad1 extends Component {
         </Col>
 
         <Col xs="12" className=" mt-3  centrado-fila">
-          <button className="btn btn-primary">Enviar</button>
+         
         </Col>
         <Col xs="12" className=" mt-3 centrado-fila ">
           <Nota
