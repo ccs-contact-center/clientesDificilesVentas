@@ -1,40 +1,44 @@
-import React, { Component } from 'react'
-import { ReactSortable } from 'react-sortablejs'
-import Nota from './notasReferencia'
-import { Row, Col } from 'reactstrap'
+import React, { Component } from "react";
+import { ReactSortable } from "react-sortablejs";
+import Nota from "./notasReferencia";
+import { Row, Col, Button } from "reactstrap";
+import AuthService from "../../../services/AuthService";
+import API_CCS from "../../../services/API_CCS";
+const API = new API_CCS();
 
 class Actividad1 extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.Auth = new AuthService();
     this.state = {
       list: [
         {
-          id: '1',
-          name: 'a) Indeciso',
+          id: "1",
+          name: "a) Indeciso",
         },
       ],
       list2: [
         {
-          id: '2',
-          name: 'b) Siempre discute',
+          id: "2",
+          name: "b) Siempre discute",
         },
       ],
       list3: [
         {
-          id: '3',
-          name: 'c) Tímido',
+          id: "3",
+          name: "c) Tímido",
         },
       ],
       list4: [
         {
-          id: '4',
-          name: 'd) Escéptico',
+          id: "4",
+          name: "d) Escéptico",
         },
       ],
       list5: [
         {
-          id: '4',
-          name: 'e) Ocupado',
+          id: "4",
+          name: "e) Ocupado",
         },
       ],
       list6: [],
@@ -42,6 +46,17 @@ class Actividad1 extends Component {
       list8: [],
       list9: [],
       list10: [],
+      id_ccs: this.Auth.getProfile().id_ccs,
+      form: "clientesDificilesVentas-1",
+    };
+  }
+
+  async onSave(e) {
+    try {
+      var respuesta = await API.guardaActividad(this.state);
+      alert("Se guardo la actividad 1, con id: " + respuesta[0].id);
+    } catch (err) {
+      console.log("loggea si hay un error");
     }
   }
 
@@ -56,10 +71,10 @@ class Actividad1 extends Component {
                   list={this.state.list}
                   setList={(newState) => this.setState({ list: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -73,10 +88,10 @@ class Actividad1 extends Component {
                   list={this.state.list2}
                   setList={(newState) => this.setState({ list2: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list2.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -89,10 +104,10 @@ class Actividad1 extends Component {
                   list={this.state.list3}
                   setList={(newState) => this.setState({ list3: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list3.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -105,10 +120,10 @@ class Actividad1 extends Component {
                   list={this.state.list4}
                   setList={(newState) => this.setState({ list4: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list4.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -121,10 +136,10 @@ class Actividad1 extends Component {
                   list={this.state.list5}
                   setList={(newState) => this.setState({ list5: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list5.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -144,7 +159,7 @@ class Actividad1 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list6}
@@ -155,7 +170,7 @@ class Actividad1 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -164,7 +179,7 @@ class Actividad1 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Debemos de tratar que se relajen y centren su atención en la
                   conversación. Peguntas como ¿cómo puede usted atender tantos
                   asuntos a la vez? son una buena forma de captar la atención.
@@ -175,7 +190,7 @@ class Actividad1 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list7}
@@ -186,7 +201,7 @@ class Actividad1 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -195,7 +210,7 @@ class Actividad1 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Debemos destacar datos y hechos objetivos del producto o
                   servicio, destacando primero las desventajas y luego todas las
                   ventajas que puede ofrecer. Debemos también ser pacientes ante
@@ -207,7 +222,7 @@ class Actividad1 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list8}
@@ -218,7 +233,7 @@ class Actividad1 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -227,7 +242,7 @@ class Actividad1 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Debemos tratar de generar un clima de confianza, ofreciéndole
                   catálogos u otros soportes visuales que hagan la conversación
                   más relajada, sin necesidad de un contacto visual continuo.
@@ -241,7 +256,7 @@ class Actividad1 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list9}
@@ -252,7 +267,7 @@ class Actividad1 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -261,7 +276,7 @@ class Actividad1 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Debemos atenderlo con firmeza y seguridad. Emplear un estilo
                   asertivo sabiendo decir no cuando sea necesario sin ser
                   agresivo.
@@ -272,7 +287,7 @@ class Actividad1 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list10}
@@ -283,7 +298,7 @@ class Actividad1 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -292,7 +307,7 @@ class Actividad1 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   No debemos imponernos ni impacientarnos. Trataremos de
                   ayudarle mostrándole nuestros productos o servicios,
                   resumiendo los puntos importantes en diferentes ocasiones.
@@ -303,17 +318,19 @@ class Actividad1 extends Component {
         </Col>
 
         <Col xs="12" className=" mt-3  centrado-fila">
-         
+          <Button color="primary" onClick={this.onSave.bind(this)}>
+            Enviar
+          </Button>
         </Col>
         <Col xs="12" className=" mt-3 centrado-fila ">
           <Nota
             title1="Instrucción:"
-            content1="Arrastre los las Letras correctas al recuadro."
+            content1="Arrastre  las Palabras correctas al recuadro."
           />
         </Col>
       </Row>
-    )
+    );
   }
 }
 
-export default Actividad1
+export default Actividad1;
