@@ -7,9 +7,9 @@ import API_CCS from "../../../services/API_CCS";
 const API = new API_CCS();
 
 class ActividadDrag2 extends Component {
-  this.Auth = new AuthService();
+  
   constructor(props) {
-   
+    this.Auth = new AuthService();
     super(props);
     this.state = {
       list: [
