@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CardBody, CardHeader, Row, Col } from 'reactstrap'
-import animated from 'animate.css'
+import 'animate.css'
 import logo from '../../assets/img/brand/logo.png'
 import bienvenida from '../../assets/img/ImgClientesDificiles/bienvenida.jpg'
 
