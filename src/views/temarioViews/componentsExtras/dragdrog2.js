@@ -9,8 +9,9 @@ const API = new API_CCS();
 class ActividadDrag2 extends Component {
   
   constructor(props) {
-    this.Auth = new AuthService();
+   
     super(props);
+    this.Auth = new AuthService();
     this.state = {
       list: [
         {
