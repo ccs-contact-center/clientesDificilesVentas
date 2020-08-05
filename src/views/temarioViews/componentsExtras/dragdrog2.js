@@ -1,40 +1,44 @@
-import React, { Component } from 'react'
-import { ReactSortable } from 'react-sortablejs'
-import Nota from './notasReferencia'
-import { Row, Col } from 'reactstrap'
+import React, { Component } from "react";
+import { ReactSortable } from "react-sortablejs";
+import Nota from "./notasReferencia";
+import { Row, Col, Button } from "reactstrap";
+import AuthService from "../../../services/AuthService";
+import API_CCS from "../../../services/API_CCS";
+const API = new API_CCS();
 
 class ActividadDrag2 extends Component {
   constructor(props) {
-    super(props)
+    this.Auth = new AuthService();
+    super(props);
     this.state = {
       list: [
         {
-          id: '1',
-          name: 'a) Indeciso',
+          id: "1",
+          name: "a) Indeciso",
         },
       ],
       list2: [
         {
-          id: '2',
-          name: 'b) Siempre discute',
+          id: "2",
+          name: "b) Siempre discute",
         },
       ],
       list3: [
         {
-          id: '3',
-          name: 'c) Tímido',
+          id: "3",
+          name: "c) Tímido",
         },
       ],
       list4: [
         {
-          id: '4',
-          name: 'd) Escéptico',
+          id: "4",
+          name: "d) Escéptico",
         },
       ],
       list5: [
         {
-          id: '4',
-          name: 'e) Ocupado',
+          id: "4",
+          name: "e) Ocupado",
         },
       ],
       list6: [],
@@ -42,6 +46,17 @@ class ActividadDrag2 extends Component {
       list8: [],
       list9: [],
       list10: [],
+      id_ccs: this.Auth.getProfile().id_ccs,
+      form: "clientesDificilesVentas-1",
+    };
+  }
+
+  async onSave(e) {
+    try {
+      var respuesta = await API.guardaActividad(this.state);
+      alert("Se guardo la actividad 1, con id: " + respuesta[0].id);
+    } catch (err) {
+      console.log("loggea si hay un error");
     }
   }
 
@@ -56,10 +71,10 @@ class ActividadDrag2 extends Component {
                   list={this.state.list}
                   setList={(newState) => this.setState({ list: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -73,10 +88,10 @@ class ActividadDrag2 extends Component {
                   list={this.state.list2}
                   setList={(newState) => this.setState({ list2: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list2.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -89,10 +104,10 @@ class ActividadDrag2 extends Component {
                   list={this.state.list3}
                   setList={(newState) => this.setState({ list3: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list3.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -105,10 +120,10 @@ class ActividadDrag2 extends Component {
                   list={this.state.list4}
                   setList={(newState) => this.setState({ list4: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list4.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -121,10 +136,10 @@ class ActividadDrag2 extends Component {
                   list={this.state.list5}
                   setList={(newState) => this.setState({ list5: newState })}
                   group="shared-group-name"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   {this.state.list5.map((item) => (
-                    <div key={item.id} style={{ marginBottom: '0px' }}>
+                    <div key={item.id} style={{ marginBottom: "0px" }}>
                       <div className="card  m-3 cursor-draggable text-center">
                         <div className="text-dark p-1">{item.name}</div>
                       </div>
@@ -144,7 +159,7 @@ class ActividadDrag2 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list6}
@@ -155,7 +170,7 @@ class ActividadDrag2 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -164,7 +179,7 @@ class ActividadDrag2 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   No debemos ocultar las desventajas del producto o servicio, ni
                   discutir acerca de los aspectos negativos que el cliente
                   señala. Tampoco mostrar signos de impaciencia o considerar las
@@ -176,7 +191,7 @@ class ActividadDrag2 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list7}
@@ -187,7 +202,7 @@ class ActividadDrag2 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -196,7 +211,7 @@ class ActividadDrag2 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   No debemos forzarlos a centrar su atención, más vale posponer
                   la venta para otro momento si vemos que el cliente no puede
                   ofrecernos atención.
@@ -207,7 +222,7 @@ class ActividadDrag2 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list8}
@@ -218,7 +233,7 @@ class ActividadDrag2 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -227,7 +242,7 @@ class ActividadDrag2 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   No debemos forzarle a mantener la mirada, o acercarnos
                   demasiado limitando su espacio personal. Tampoco es
                   aconsejable preguntarle sobre sus opiniones o dudas,
@@ -239,7 +254,7 @@ class ActividadDrag2 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list9}
@@ -250,7 +265,7 @@ class ActividadDrag2 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -259,7 +274,7 @@ class ActividadDrag2 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Trataremos de evitar las discusiones con el cliente, o
                   dejarnos impresionar por su sarcasmo. No consideraremos sus
                   críticas como ofensas personales ni mostraremos indicios de
@@ -271,7 +286,7 @@ class ActividadDrag2 extends Component {
               <Col
                 xs="2"
                 className="border border-white"
-                style={{ padding: '10px' }}
+                style={{ padding: "10px" }}
               >
                 <ReactSortable
                   list={this.state.list10}
@@ -282,7 +297,7 @@ class ActividadDrag2 extends Component {
                     <div key={item.id}>
                       <div
                         className="card cursor-draggable text-center"
-                        style={{ marginBottom: '0px' }}
+                        style={{ marginBottom: "0px" }}
                       >
                         <div className="text-dark">{item.name}</div>
                       </div>
@@ -291,7 +306,7 @@ class ActividadDrag2 extends Component {
                 </ReactSortable>
               </Col>
               <Col xs="10">
-                <p style={{ marginBottom: '0px' }}>
+                <p style={{ marginBottom: "0px" }}>
                   Debemos dejarle espacio para que reflexione sobre su decisión,
                   nunca agobiarlo. Tampoco debemos presentarle un número
                   excesivo de datos e información, pues aumentará su indecisión
@@ -302,17 +317,19 @@ class ActividadDrag2 extends Component {
         </Col>
 
         <Col xs="12" className=" mt-3  centrado-fila">
-         
+          <Button color="primary" onClick={this.onSave.bind(this)}>
+            Enviar
+          </Button>
         </Col>
         <Col xs="12" className=" mt-3 centrado-fila ">
           <Nota
             title1="Instrucción:"
-            content1="Arrastre los las Letras correctas al recuadro."
+            content1="Arrastre  las Palabras correctas al recuadro."
           />
         </Col>
       </Row>
-    )
+    );
   }
 }
 
-export default ActividadDrag2
+export default ActividadDrag2;
