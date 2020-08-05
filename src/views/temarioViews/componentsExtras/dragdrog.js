@@ -8,8 +8,9 @@ const API = new API_CCS();
 
 class Actividad1 extends Component {
   constructor(props) {
-    super(props);
     this.Auth = new AuthService();
+    super(props);
+   
     this.state = {
       list: [
         {
