@@ -47,7 +47,7 @@ class ActividadDrag2 extends Component {
       list9: [],
       list10: [],
       id_ccs: this.Auth.getProfile().id_ccs,
-      form: "clientesDificilesVentas-1",
+      form: "clientesDificilesVentas-2",
     };
   }
 
