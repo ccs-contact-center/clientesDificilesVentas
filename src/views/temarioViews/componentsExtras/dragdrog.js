@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ReactSortable } from "react-sortablejs";
 import Nota from "./notasReferencia";
 import { Row, Col, Button } from "reactstrap";
+import swal from "sweetalert"
 import AuthService from "../../../services/AuthService";
 import API_CCS from "../../../services/API_CCS";
 const API = new API_CCS();
@@ -55,8 +56,35 @@ class Actividad1 extends Component {
   async onSave(e) {
     try {
       var respuesta = await API.guardaActividad(this.state);
-      alert("Se guardo la actividad 1, con id: " + respuesta[0].id);
+
+      swal({
+        title: "Status Actividad",
+        text: "Se guardo la actividad: 1, con id: " + respuesta[0].id,
+        icon: "success",
+        dangerMode: true,
+        button: {
+          text: "Aceptar",
+          value: true,
+          visible: true,
+          className: "btn btn-primary",
+          reset: true,
+        },
+      });
+      
+      // alert("Se guardo la actividad: 1, con id: " + respuesta[0].id);
     } catch (err) {
+      swal({
+        title: "Status Actividad",
+        text: "No se guardo la actividad: 1, Intenta de nuevo. ",
+        icon: "error",
+        dangerMode: true,
+        button: {
+          text: "Cerrar",
+          value: true,
+          visible: true,
+          className: "btn btn-primary ",
+        },
+      });
       console.log("loggea si hay un error");
     }
   }
